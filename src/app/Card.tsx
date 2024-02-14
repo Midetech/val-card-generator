@@ -30,7 +30,7 @@ const Card = ({
             <span className=" not-italic">{name.to}</span>
           </p>
           <div className="w-3/5 border-white dark:border-black border-b-[0.2px]"></div>
-          <p className="text-[18px] font-medium  text-white dark:text-black w-4/5 max-h-44 text-center py-4">
+          <p className="lg:text-[18px] text-[12px] font-medium  text-white dark:text-black w-4/5 lg:max-h-44 max-h-22 text-center py-4">
             {message}
           </p>
           <div className=" w-3/5 border-white dark:border-black border-b-[0.2px]"></div>
