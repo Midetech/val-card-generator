@@ -59,9 +59,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex lg:min-h-screen flex-col items-center lg:gap-y-8 gap-y-5 lg:p-6 p-8 dark:text-white dark:bg-black bg-white">
+    <div className="flex lg:min-h-screen flex-col items-center lg:gap-y-8 gap-y-5 lg:p-6 py-8 px-6 dark:text-white dark:bg-black bg-white">
       <div className="flex flex-col gap-y-4 items-center">
-        <p className="lg:text-[44px] lg:leading-[54px] leading-normal text-center text-[30px] font-bold">
+        <p className="lg:text-[44px] lg:leading-[54px] leading-normal text-center text-[28px] font-bold">
           Generate a personalized
           <br />
           Valentine&apos;s Day poster{" "}
