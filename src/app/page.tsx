@@ -20,6 +20,7 @@ export default function Home() {
   const [imageURL, setImageURL] = React.useState("");
   const [message, setMessage] = React.useState<Quote>();
   const [loading, setLoading] = React.useState(false);
+  const [loadingImage, setLoadingImage] = React.useState(false);
 
   const divRef = React.useRef<HTMLDivElement>(null);
 
@@ -38,8 +39,10 @@ export default function Home() {
     }
   };
   const fetchImage = () => {
+    setLoadingImage(true);
     fetch(`${process.env.NEXT_PUBLIC_IMAGE_URL}?love`).then((response) => {
       setImageURL(response.url);
+      setLoadingImage(false);
     });
   };
 
@@ -106,16 +109,27 @@ export default function Home() {
             <IoHeartOutline color="#e6194c" />
           </div>
         </div>
-        <button
-          disabled={loading || !name.from || !name.to}
-          onClick={() => {
-            fetchImage();
-            generateMessage();
-          }}
-          className="bg-[#e6194c] text-white rounded-[10px] h-[48px] w-full px-4 py-2 disabled:cursor-not-allowed disabled:bg-slate-400"
-        >
-          {loading ? "Please wait..." : "Generate"}
-        </button>
+        <div className="space-y-4">
+          <button
+            disabled={loading || !name.from || !name.to}
+            onClick={() => {
+              generateMessage();
+            }}
+            className="bg-[#e6194c] text-white rounded-[10px] h-[48px] w-full px-4 py-2 disabled:cursor-not-allowed disabled:bg-slate-400"
+          >
+            {loading ? "Please wait..." : "Generate Text"}
+          </button>
+
+          <button
+            disabled={loadingImage}
+            onClick={() => {
+              fetchImage();
+            }}
+            className="bg-[#e6194c] text-white rounded-[10px] h-[48px] w-full px-4 py-2 disabled:cursor-not-allowed disabled:bg-slate-400"
+          >
+            {loadingImage ? "Please wait..." : "Generate New Image"}
+          </button>
+        </div>
       </div>
 
       <Card {...{ imageURL, name, divRef }} message={message?.quote} />
