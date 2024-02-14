@@ -107,11 +107,12 @@ export default function Home() {
           </div>
         </div>
         <button
+          disabled={loading || !name.from || !name.to}
           onClick={() => {
             fetchImage();
             generateMessage();
           }}
-          className="bg-[#e6194c] text-white rounded-[10px] h-[48px] w-full px-4 py-2"
+          className="bg-[#e6194c] text-white rounded-[10px] h-[48px] w-full px-4 py-2 disabled:cursor-not-allowed disabled:bg-slate-400"
         >
           {loading ? "Please wait..." : "Generate"}
         </button>
