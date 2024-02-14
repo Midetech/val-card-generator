@@ -43,7 +43,7 @@ export default function Home() {
     }
   };
   const fetchImage = () => {
-    fetch(`https://source.unsplash.com/1600x900/?love`).then((response) => {
+    fetch(`${process.env.NEXT_PUBLIC_IMAGE_URL}?love`).then((response) => {
       setImageURL(response.url);
       console.log(response.url);
     });
@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
   const generateMessage = () => {
     setLoading(true);
-    fetch(`https://api.api-ninjas.com/v1/quotes?category=love`, {
+    fetch(`${process.env.NEXT_PUBLIC_RANDOM_MESSAGE_API_URL}?category=love`, {
       headers: { "X-Api-Key": "P9xZl7vA1iuMQevWXA1suw==liKyURQz2EMfQWTq" },
     }).then((response) => {
       response.json().then((data: Quote[]) => {
@@ -123,12 +123,7 @@ export default function Home() {
         </button>
       </div>
 
-      <Card
-        {...{ imageURL, name, divRef }}
-        message={
-          message?.quote 
-        }
-      />
+      <Card {...{ imageURL, name, divRef }} message={message?.quote} />
 
       <button
         onClick={handleDownload}
