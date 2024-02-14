@@ -12,11 +12,6 @@ interface Quote {
   category?: string;
 }
 
-interface Message {
-  role: string;
-  content: string;
-}
-
 export default function Home() {
   const [name, setName] = React.useState({
     from: "",
@@ -45,7 +40,6 @@ export default function Home() {
   const fetchImage = () => {
     fetch(`${process.env.NEXT_PUBLIC_IMAGE_URL}?love`).then((response) => {
       setImageURL(response.url);
-      console.log(response.url);
     });
   };
 
